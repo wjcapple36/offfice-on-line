@@ -1,0 +1,34 @@
+connect 127.0.0.1 6500
+select * from tb_any_unit_osw;
+delete  from tb_route
+/etc/init.d/runapp.sh
+select id,frame,slot,type,port from tb_composition where(1 frame=2 %s %s %s %s)
+
+select id,val1 ,bin_len,bin_data from tb_common where(1 and val1=50331649 and bin_len=6656);
+
+
+
+printf("%s(): Line : %d \n",  __FUNCTION__, __LINE__);
+mount -t nfs -o nolock 192.168.1.159:/home/targetnfs/ /tmp
+
+make_ext4fs -s -l 314572800 -a root -L linux system.img root
+fastboot.exe flash kernel zImage
+fastboot.exe flash system system.img
+fastboot -w
+tftp 30000000 YC2440_ADS_TEST.bin
+go 30000000
+
+tftp 30000000 2440-test.bin
+go 30000000
+go 30009710
+go 30009410
+netstat -ano | grep 6500
+
+
+tftp 30000000 TQ2440_Test.bin
+
+%.d: %.c
+  set -e; rm -f $@; \
+  $(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
+  sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
+  rm -f $@.$$$$
