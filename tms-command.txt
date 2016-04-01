@@ -1,6 +1,12 @@
 connect 127.0.0.1 6500
+*******************************************************
+sqlite3ÃüÁî£º
 select * from tb_any_unit_osw;
 delete  from tb_route
+.table
+select count() from tb_route where(1);
+.quit ÍË³ö
+*******************************************************
 /etc/init.d/runapp.sh
 select id,frame,slot,type,port from tb_composition where(1 frame=2 %s %s %s %s)
 
