@@ -15,11 +15,15 @@ select id,val1 ,bin_len,bin_data from tb_common where(1 and val1=50331649 and bi
 
 
 printf("%s(): Line : %d \n",  __FUNCTION__, __LINE__);
+如果网络正常，能ping大包，使用默认参数，包长很大
 mount -t nfs -o nolock 192.168.1.159:/home/targetnfs/ /tmp
+
+在本机上试验可以，如果将vers=3或许就可以了
 mount -t nfs -o nolock,vers=2 192.168.1.159:/home/targetnfs/ /tmp
-
+挂载cifs
 mount -t cifs //192.168.1.36/cifs_wjc  -o username=Administrator /tmp
-
+网络不佳的时候，需要用小包去连接：确定步骤，正常ping，以能够稳定ping通的包为准
+mount -t nfs -o nolock,rsize=1024,wsize=1024 192.168.1.159:/home/targetnfs/ /usr/MenglongWu/xp
 
 make_ext4fs -s -l 314572800 -a root -L linux system.img root
 fastboot.exe flash kernel zImage
