@@ -7,22 +7,23 @@ delete  from tb_route
 select count() from tb_route where(1);
 .quit 退出
 *******************************************************
-/etc/init.d/runapp.sh
-select id,frame,slot,type,port from tb_composition where(1 frame=2 %s %s %s %s)
-
-select id,val1 ,bin_len,bin_data from tb_common where(1 and val1=50331649 and bin_len=6656);
+localedef  -f UTF-8 -i zh_CN /usr/lib/locale/zh_CN.utf8
+arp -n | grep "192.168.0.*" | awk '{print $2 "\t" $4}' | sort
 
 
 
 printf("%s(): Line : %d \n",  __FUNCTION__, __LINE__);
+
+挂载cifs
+mount -t cifs //192.168.1.36/cifs_wjc  -o username=Administrator /usr/MenglongWu/xp  
+
 如果网络正常，能ping大包，使用默认参数，包长很大
 mount -t nfs -o nolock 192.168.1.159:/home/targetnfs/ /tmp
 mount -t nfs -o nolock 192.168.1.159:/home/targetnfs/ /usr/MenglongWu/xp
 
 在本机上试验可以，如果将vers=3或许就可以了
 mount -t nfs -o nolock,vers=2 192.168.1.159:/home/targetnfs/ /tmp
-挂载cifs
-mount -t cifs //192.168.1.36/cifs_wjc  -o username=Administrator /usr/MenglongWu/xp
+
 网络不佳的时候，需要用小包去连接：确定步骤，正常ping，以能够稳定ping通的包为准
 mount -t nfs -o nolock,rsize=1024,wsize=1024 192.168.1.159:/home/targetnfs/ /usr/MenglongWu/xp
 
@@ -33,10 +34,8 @@ fastboot -w
 tftp 30000000 YC2440_ADS_TEST.bin
 go 30000000
 
-tftp 30000000 2440-test.bin
-go 30000000
-go 30009710
-go 30009410
+
+
 netstat -ano | grep 6500
 
 
