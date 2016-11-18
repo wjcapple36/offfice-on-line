@@ -16,6 +16,10 @@ printf("%s(): Line : %d \n",  __FUNCTION__, __LINE__);
 
 挂载cifs
 mount -t cifs //192.168.1.36/cifs_wjc  -o username=Administrator /usr/MenglongWu/xp  
+win7 挂载cifs 需要先设置没有密码共享
+mount -t cifs //192.168.1.36/cifs_wjc  -o username=Everyone /usr/MenglongWu/xp 
+mount -t cifs //192.168.1.36/cifs_wjc  -o username=Everyone /xp 
+
 
 如果网络正常，能ping大包，使用默认参数，包长很大
 mount -t nfs -o nolock 192.168.1.159:/home/targetnfs/ /tmp
